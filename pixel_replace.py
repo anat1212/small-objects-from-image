@@ -3,11 +3,12 @@ import glob
 from skimage import io
 import cv2
 
+""" put value from 1-99 in the percentage variable"""
 percentage = 55
 percentage_used = percentage / 100
 counter = 0
 print(counter)
-""" choose file directory for images that need to be porcessed"""
+""" choose file directory that stores images to be porcessed by the script"""
 images = glob.glob("D:/clusterdelta/global-wheat-detection/train/*.jpg")
 for name in images:
     im1 = io.imread(name)
@@ -36,9 +37,10 @@ for name in images:
         else:
             break
 
-    """replace pixels with value 255"""
+    """replace pixels with value 0"""
     for i in empty_list4:
-        im1 = (np.where(im1[:,:,0:1]==i, 255, im1))
+        """put zero or any other value just before im1 variable"""
+        im1 = (np.where(im1[:,:,0:1]==i, 0, im1)) 
         # im1 = cv2.cvtColor(im1, cv2.COLOR_RGBA2GRAY)
         # thresh = 128
         # im1 = cv2.threshold(im1, thresh, 255, cv2.THRESH_BINARY)[1]
@@ -50,4 +52,5 @@ for name in images:
     # plt.show()
 
     counter += 1
+     """below adjust if you need to modify output image name"""
     io.imsave(str(name[45:]), im1)
