@@ -8,7 +8,7 @@ percentage = 55
 percentage_used = percentage / 100
 counter = 0
 print(counter)
-""" choose file directory that stores images to be porcessed by the script"""
+""" choose file directory that stores images to be processed by the script"""
 images = glob.glob("D:/clusterdelta/global-wheat-detection/train/*.jpg")
 for name in images:
     im1 = io.imread(name)
